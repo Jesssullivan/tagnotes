@@ -10,18 +10,20 @@ I am using Python with the Google Calendar API (see here: https://developers.goo
 
 This script uses a sync$ variable to lock other threads out of an evaluation during concurrency.
 So far I think the easiest way to manage the resulting domain is from within a module like so:
+
 ```
 module charMatches {
   var dates : domain(string);
 }
 ```
+
 Here, domain charMatches.dates will need to accessed as a reference variable from any procedures that need it.
-```
+
+```Chapel
 proc dateCheck(aFile, ref choice) {
     ...
 }
 ... 
-...
 coforall folder in walkdirs('check/') {
     for file in findfiles(folder) {
         dateCheck(file, charMatches.dates);
@@ -30,6 +32,7 @@ coforall folder in walkdirs('check/') {
 ```
 
 errors like:
+
 ```
 error: unresolved call '_ir_split__ref_string.size'
 
@@ -38,11 +41,13 @@ unresolved call 'norm(promoted expression)'
 ...or other variants of:
 string.split().size  (length, etc)
 ```
+
 ...Tie into a Chapel Specification issue.
 
 https://github.com/chapel-lang/chapel/issues/7982
 
 The short solution is do not use .split; instead, I have been chopping strings with .partition().
+
 ```
 // like so:
 ...
@@ -50,5 +55,4 @@ if choice.contains(line.partition(hSep)[3].partition(hTerminate)[1]) == false {
     ...process string...
     ...
 }
-
 ```
