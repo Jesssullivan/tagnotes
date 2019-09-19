@@ -4,7 +4,7 @@ Despite Chapel's many quirks and annoyances surrounding string handling, its eff
 
 As of 9/19/19, there is still a laundry list of things to add- control flow (for instance, “don't add the event over and over”) less brittle syntax, annotations, actual error handling, etc.  It does find and upload calendar entries though!
 
-I am using Python with the Google Calendar API (see here: [https://developers.google.com/calendar/v3/reference/])  in a looping Daemon thread.  All the sifting for tags is managed with the Chapel binary, which dumps anything it finds into a csv from which the daemon will push calendar entries with proper formatting.  FWIW, Google’s dates (datetime.datetime) adhere to RFC3339 (https://tools.ietf.org/html/rfc3339) which conveniently is the default of the datetime.isoformat() method.  
+I am using Python with the Google Calendar API (see here: https://developers.google.com/calendar/v3/reference/)  in a looping Daemon thread.  All the sifting for tags is managed with the Chapel binary, which dumps anything it finds into a csv from which the daemon will push calendar entries with proper formatting.  FWIW, Google’s dates (datetime.datetime) adhere to RFC3339 (https://tools.ietf.org/html/rfc3339) which conveniently is the default of the datetime.isoformat() method.  
 
 **Some pesky things to keep in mind:**
 
