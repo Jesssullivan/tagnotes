@@ -8,14 +8,6 @@ I am using Python with the Google Calendar API (see here: https://developers.goo
 
 **Some pesky things to keep in mind:**
 
-
-```
-
-if choice.contains(line.partition(hSep)[3].partition(hTerminate)[1]) == false {
-
-
-```
-
 This script uses a sync$ variable to lock other threads out of an evaluation during concurrency.
 So far I think the easiest way to manage the resulting domain is from within a module like so:
 ```
